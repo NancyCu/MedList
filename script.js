@@ -74,7 +74,7 @@ function renderMedications() {
     const li = document.createElement('li');
     li.className = 'med-item';
     li.innerHTML = `<details>
-        <summary data-med-name="${med.name}">${med.number}. <a href="${link}" target="_blank" rel="noopener noreferrer">${med.name}</a></summary>
+        <summary data-med-name="${med.name}">${med.number}. <a href="${link}">${med.name}</a></summary>
         <div class="med-details">
           <p><strong>Directions:</strong> ${med.directions}</p>
           <p><strong>Commonly known as:</strong> ${med.common}</p>
