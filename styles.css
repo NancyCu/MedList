@@ -133,6 +133,16 @@ h2 {
   color: red;
 }
 
+#login-form label {
+  font-size: 1.25rem;
+}
+
+#login-form input[type="password"] {
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
 @media (max-width: 600px) {
   body {
     font-size: 18px;

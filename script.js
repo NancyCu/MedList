@@ -1,7 +1,9 @@
 const patient = {
   name: "STEVE NGUYEN",
-  address: "6888 N 9th Ave<br>Pensacola, FL 32504",
-  phone: "(850)476-0710"
+  address: "3097 Pelican Ln<br>Pensacola, FL 32514<br>United States",
+  phone: "+1 (817) 706-3838",
+  email: "snq3838@gmail.com",
+  birthday: "November 21, 1952"
 };
 
 const physicians = [
@@ -41,7 +43,11 @@ const medications = [
 function renderPatient() {
   const el = document.getElementById('patient');
   el.innerHTML = `<h2>Patient</h2>
-    <p><strong>${patient.name}</strong><br>${patient.address}<br>${patient.phone}</p>`;
+    <p><strong>${patient.name}</strong><br>
+    Mobile: ${patient.phone}<br>
+    Email: ${patient.email}<br>
+    ${patient.address}<br>
+    Birthday: ${patient.birthday}</p>`;
 }
 
 function renderPhysicians() {
