@@ -27,13 +27,13 @@
     </script>
   </head>
   <body>
+    <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Navigation">
+      <i class="fas fa-bars"></i>
+    </button>
     <nav id="sidebar" class="sidebar">
-      <button id="sidebar-toggle" aria-label="Toggle Navigation">
-        <i class="fas fa-bars"></i>
-      </button>
       <ul>
-        <li><a href="#patient"><i class="fas fa-user"></i> Patient</a></li>
-        <li><a href="#physicians"><i class="fas fa-user-md"></i> Physicians</a></li>
+        <li><a href="#patient"><i class="fas fa-user"></i> Patient Info</a></li>
+        <li><a href="#physicians"><i class="fas fa-user-md"></i> Physician Info</a></li>
         <li><a href="#medications"><i class="fas fa-pills"></i> Medications</a></li>
       </ul>
     </nav>
@@ -43,12 +43,15 @@
         <div class="header-actions">
           <button id="mode-toggle" aria-label="Toggle light or dark mode">
             <i class="fas fa-moon"></i>
+            <span>Dark Mode</span>
           </button>
           <button id="print-btn" aria-label="Print list">
             <i class="fas fa-print"></i>
+            <span>Print</span>
           </button>
           <button id="pdf-btn" aria-label="Download PDF">
             <i class="fas fa-file-pdf"></i>
+            <span>Download PDF</span>
           </button>
           <div id="qr-container"></div>
         </div>
