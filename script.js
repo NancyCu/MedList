@@ -164,23 +164,52 @@ function renderPhysicians() {
 }
 
 function renderMedications() {
-  const list = document.getElementById("med-list");
+  const list = document.getElementById('med-list');
+  list.innerHTML = '';
   medications.forEach((med) => {
     const link = `https://www.drugs.com/search.php?searchterm=${encodeURIComponent(med.name)}`;
-    const li = document.createElement("li");
-    li.className = "med-item";
-    li.innerHTML = `<details>
+    const li = document.createElement('li');
+    li.className = 'med-item';
+    li.innerHTML = `
+      <details>
         <summary data-med-name="${med.name}">${med.number}. <a href="${link}">${med.name}</a></summary>
         <div class="med-details">
           <p><strong>Directions:</strong> ${med.directions}</p>
           <p><strong>Commonly known as:</strong> ${med.common}</p>
           <p><strong>RX:</strong> ${med.rx}</p>
           <p><strong>Treatment:</strong> ${med.treatment}</p>
+          <!-- Image Upload Section for this medication -->
+          <div class="med-pill-upload">
+            <div class="pill-image-box" id="pill-image-box-${med.number}">
+              <!-- Uploaded image will appear here -->
+            </div>
+            <input type="file" accept="image/*" id="pill-upload-${med.number}" title="Upload pill image for ${med.name}">
+          </div>
         </div>
-      </details>`;
+      </details>
+    `;
     list.appendChild(li);
+    document.getElementById(`pill-upload-${med.number}`).addEventListener('change', function(e) {
+      handlePillImageUploadForMed(e, med.number);
+    });
   });
-  attachToggleListeners();
+}
+
+function handlePillImageUploadForMed(event, medNumber) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.style.maxWidth = '100%';
+      img.style.height = 'auto';
+      const pillBox = document.getElementById(`pill-image-box-${medNumber}`);
+      pillBox.innerHTML = '';
+      pillBox.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  }
 }
 
 function attachToggleListeners() {
