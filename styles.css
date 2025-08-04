@@ -126,7 +126,7 @@ strong {
   padding: 1rem;
   font-weight: 700;
   cursor: pointer;
-  background: #b3e5fc;
+  background: #e3f2fd;
   color: #ff4081; /* changed from var(--accent) to a brighter color */
   transition: background 0.3s ease;
 }
@@ -142,7 +142,7 @@ strong {
 }
 
 .med-item summary:hover {
-  background: #81d4fa;
+  background: #bbdefb;
 }
 
 .med-details {
@@ -171,8 +171,12 @@ strong {
   }
 
   .med-item summary {
-    background: #01579b;
+    background: #0277bd;
     color: #ff4081; /* changed from #80deea to a brighter color */
+  }
+
+  .med-item summary:hover {
+    background: #0288d1;
   }
 
   .med-item summary a {
