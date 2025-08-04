@@ -284,6 +284,7 @@ details[open] .med-details {
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .header-actions button {
@@ -456,6 +457,20 @@ body.light-mode {
 
   .physician-map iframe {
     height: 150px;
+  }
+
+  .header-actions {
+    gap: 0.25rem;
+  }
+
+  .header-actions button {
+    min-width: 0;
+    flex: 1;
+    padding: 0.5rem;
+  }
+
+  .header-actions button span {
+    display: none;
   }
 }
 
