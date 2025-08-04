@@ -72,7 +72,7 @@ function renderMedications() {
     const li = document.createElement('li');
     li.className = 'med-item';
     li.innerHTML = `<details>
-        <summary>${med.number}. <a href="${link}" target="_blank" rel="noopener noreferrer">${med.name}</a></summary>
+        <summary data-med-name="${med.name}">${med.number}. <a href="${link}" target="_blank" rel="noopener noreferrer">${med.name}</a></summary>
         <div class="med-details">
           <p><strong>Directions:</strong> ${med.directions}</p>
           <p><strong>Commonly known as:</strong> ${med.common}</p>
@@ -80,6 +80,19 @@ function renderMedications() {
           <p><strong>Treatment:</strong> ${med.treatment}</p>
         </div>
       </details>`;
+    const details = li.querySelector('details');
+    const summary = details.querySelector('summary');
+    details.addEventListener('toggle', () => {
+      if (details.open) {
+        document.querySelectorAll('.med-item details[open]').forEach(d => {
+          if (d !== details) {
+            d.open = false;
+          }
+        });
+        const header = document.getElementById('sticky-header');
+        header.textContent = summary.dataset.medName;
+      }
+    });
     list.appendChild(li);
   });
 }
