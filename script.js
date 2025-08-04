@@ -175,10 +175,22 @@ function renderMedications() {
         <summary data-med-name="${med.name}">${med.number}. <a href="${link}">${med.name}</a></summary>
         <div class="med-details">
           <div class="drug-info-left">
-            <p><strong>Directions:</strong> ${med.directions}</p>
-            <p><strong>Commonly known as:</strong> ${med.common}</p>
-            <p><strong>RX:</strong> ${med.rx}</p>
-            <p><strong>Treatment:</strong> ${med.treatment}</p>
+            <div class="info-row">
+              <span class="info-title">Directions:</span>
+              <span class="info-data">${med.directions}</span>
+            </div>
+            <div class="info-row">
+              <span class="info-title">Commonly known as:</span>
+              <span class="info-data">${med.common}</span>
+            </div>
+            <div class="info-row">
+              <span class="info-title">RX:</span>
+              <span class="info-data">${med.rx}</span>
+            </div>
+            <div class="info-row">
+              <span class="info-title">Treatment:</span>
+              <span class="info-data">${med.treatment}</span>
+            </div>
           </div>
           <div class="med-pill-upload">
             <div class="pill-image-box" id="pill-image-box-${med.number}">

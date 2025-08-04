@@ -150,6 +150,30 @@ strong {
   background: var(--light-bg);
 }
 
+.drug-info-left,
+.drug-details {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info-row {
+  display: table-row;
+}
+
+.info-title,
+.info-data {
+  display: table-cell;
+  padding: 0.25rem 0;
+}
+
+.info-title {
+  font-weight: 700;
+  color: var(--primary);
+  padding-right: 1rem;
+  white-space: nowrap;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background: linear-gradient(135deg, #0d47a1, #006064);
