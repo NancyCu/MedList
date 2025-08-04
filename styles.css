@@ -219,50 +219,46 @@ details[open] .med-details {
   border-left: 4px solid var(--accent);
 }
 
-/* Sidebar navigation */
-.sidebar {
+/* Top navigation */
+.nav-menu {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 180px;
+  width: 100%;
   background: rgba(0, 0, 0, 0.6);
-  padding-top: 1rem;
-  transform: translateX(-100%);
+  padding: 3rem 1rem 1rem;
+  transform: translateY(-100%);
   transition: transform 0.3s ease;
   z-index: 1000;
 }
 
-.sidebar.open {
-  transform: translateX(0);
+.nav-menu.open {
+  transform: translateY(0);
 }
 
-.sidebar ul {
+.nav-menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.sidebar li {
-  margin: 1rem 0;
+.nav-menu li {
+  margin: 0.5rem 0;
 }
 
-.sidebar a {
+.nav-menu a {
   color: var(--accent-light);
   text-decoration: none;
   font-weight: 700;
 }
 
-.sidebar-toggle {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  background: none;
-  border: none;
-  color: var(--accent-light);
-  font-size: 1.5rem;
-  cursor: pointer;
-  z-index: 1100;
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .page-header {
@@ -287,6 +283,8 @@ details[open] .med-details {
   border: none;
   color: var(--accent-light);
   padding: 0.5rem 0.75rem;
+  min-width: 130px;
+  justify-content: center;
   border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -318,9 +316,9 @@ body.light-mode {
     background: #ffffff;
     color: #000000;
   }
-  .sidebar,
+  .nav-menu,
   .header-actions,
-  .sidebar-toggle,
+  .nav-toggle,
   #qr-container {
     display: none;
   }

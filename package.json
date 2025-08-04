@@ -1,0 +1,8 @@
+{
+  "name": "medlist",
+  "version": "1.0.0",
+  "description": "Medication list web app",
+  "scripts": {
+    "test": "echo \"No tests available\" && exit 0"
+  }
+}
