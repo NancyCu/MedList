@@ -308,6 +308,12 @@ function expandAllAndPrint() {
   window.print();
 }
 
+function expandAllMedicationsForPrint() {
+  document.querySelectorAll('.med-item details').forEach(details => {
+    details.open = true;
+  });
+}
+
 function initUI() {
   const modeBtn = document.getElementById('mode-toggle');
   modeBtn.addEventListener('click', () => {
@@ -322,9 +328,16 @@ function initUI() {
     }
   });
 
-  document.getElementById('print-btn').addEventListener('click', expandAllAndPrint);
+  // Attach to print/download PDF buttons
+  document.getElementById('print-btn').addEventListener('click', () => {
+    expandAllMedicationsForPrint();
+    window.print();
+  });
 
-  document.getElementById('pdf-btn').addEventListener('click', expandAllAndPrint);
+  document.getElementById('pdf-btn').addEventListener('click', () => {
+    expandAllMedicationsForPrint();
+    window.print();
+  });
 
   const qr = document.createElement('img');
   qr.src =
@@ -343,6 +356,11 @@ function initUI() {
     link.addEventListener('click', () => {
       menu.classList.remove('open');
     });
+  });
+
+  document.getElementById('menu-toggle').addEventListener('click', function () {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('open');
   });
 }
 

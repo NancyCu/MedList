@@ -1,0 +1,77 @@
+/* Updated print styles for medication list */
+
+body * {
+  visibility: hidden;
+}
+.container, .container * {
+  visibility: visible;
+}
+header, nav, .header-actions, #qr-container, #sidebar, #sidebar-toggle, .nav-toggle, #mode-toggle, #print-btn, #pdf-btn {
+  display: none !important;
+}
+
+.container {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0.5in !important;
+  background: #fff !important;
+  color: #000 !important;
+  font-family: Times New Roman, Times, serif !important;
+}
+
+#med-list {
+  margin: 0;
+  padding: 0;
+}
+
+.med-item {
+  border-bottom: 2px solid #000;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+  page-break-inside: avoid;
+}
+
+.med-item details,
+.med-item[open] {
+  display: block !important;
+}
+
+.med-item summary {
+  display: none !important;
+}
+
+.med-details {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1em;
+}
+
+.med-number {
+  font-size: 2em;
+  font-weight: bold;
+  margin-right: 0.5em;
+  min-width: 2em;
+  text-align: right;
+}
+
+.drug-info-left {
+  flex: 1;
+}
+
+.info-title {
+  font-weight: bold;
+}
+
+.info-data {
+  margin-left: 0.5em;
+}
+
+.treatment {
+  font-style: italic;
+}
+
+@page {
+  margin: 0.5in;
+}
