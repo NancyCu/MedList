@@ -89,8 +89,8 @@ h2 {
 
 .patient-name {
   color: var(--accent);
-  font-weight: 900; /* increased boldness */
-  font-size: 1.75rem; /* increased size */
+  font-weight: 900; /* bolder */
+  font-size: 2rem; /* larger size */
   margin: 0.35rem 0;
 }
 
