@@ -141,7 +141,6 @@ el.innerHTML = `
     <p>${addressLink}</p>
     <p>Birthday: ${patient.birthday}</p>
   </div>`;
-
 }
 
 function renderPhysicians() {
