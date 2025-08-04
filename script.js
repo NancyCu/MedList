@@ -44,10 +44,9 @@ function renderPatient() {
   const el = document.getElementById('patient');
   el.innerHTML = `<h2>Patient</h2>
     <div class="patient-card">
-      <p class="patient-name"><strong>${patient.name}</strong></p>
+      <p class="patient-name"><strong>${patient.name}</strong><br>${patient.address}<br></p>
       <p>Mobile: ${patient.phone}</p>
       <p>Email: ${patient.email}</p>
-      <p>${patient.address}</p>
       <p>Birthday: ${patient.birthday}</p>
     </div>`;
 }
