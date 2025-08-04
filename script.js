@@ -28,96 +28,134 @@ const physicians = [
 const medications = [
   {
     number: 1,
-    name: "Allopurinol 300 mg tablet",
-    directions: "Take 300 mg by mouth every day",
+    name: "Allopurinol",
+    dosage: "300 mg tablet",
+    instructions: "Take 300 mg by mouth every day",
+    doctor: "Dr. Edward A Schuka",
+    type: "other",
     common: "ZYLOPRIM",
     rx: "1957395",
     treatment: "Gout",
   },
   {
     number: 2,
-    name: "Carvedilol 25 mg tablet",
-    directions: "Take 2 Tabs (50 mg total) by mouth two(2) times daily",
+    name: "Carvedilol",
+    dosage: "25 mg tablet",
+    instructions:
+      "Take 2 Tabs (50 mg total) by mouth two(2) times daily",
+    doctor: "Dr. Sameer Waheed",
+    type: "heart",
     common: "COREG",
     rx: "1958723",
     treatment: "High Blood Pressure / Heart Failure",
   },
   {
     number: 3,
-    name: "Atorvastatin 10 mg tablet",
-    directions: "Take 10 mg by mouth every day",
+    name: "Atorvastatin",
+    dosage: "10 mg tablet",
+    instructions: "Take 10 mg by mouth every day",
+    doctor: "Dr. Sameer Waheed",
+    type: "heart",
     common: "LIPITOR",
     rx: "1930787",
     treatment: "High Cholesterol",
   },
   {
     number: 4,
-    name: "ELIQUIS 5 mg tablet",
-    directions: "TAKE 1 TABLET BY MOUTH TWICE DAILY",
+    name: "Eliquis",
+    dosage: "5 mg tablet",
+    instructions: "Take 1 tablet by mouth twice daily",
+    doctor: "Dr. Sameer Waheed",
+    type: "heart",
     common: "Generic: apixaban",
     rx: "1930784",
     treatment: "Atrial Fibrillation / prevent blood clots",
   },
   {
     number: 5,
-    name: "Valsartan-hydrochlorothiazide 320-25 mg tablet",
-    directions: "Take 1 Tab by mouth two(2) times daily",
+    name: "Valsartan-hydrochlorothiazide",
+    dosage: "320-25 mg tablet",
+    instructions: "Take 1 Tab by mouth two(2) times daily",
+    doctor: "Dr. Sameer Waheed",
+    type: "heart",
     common: "DIOVAN HCT",
     rx: "1958722",
     treatment: "High Blood Pressure",
   },
   {
     number: 6,
-    name: "Metformin HCL 500 mg tablet",
-    directions: "Take 1 Tab by mouth two(2) times daily",
+    name: "Metformin HCL",
+    dosage: "500 mg tablet",
+    instructions: "Take 1 Tab by mouth two(2) times daily",
+    doctor: "Dr. Edward A Schuka",
+    type: "other",
     common: "Glucophage",
     rx: "1958371",
     treatment: "High Blood Sugar / Type 2 Diabetes",
   },
   {
     number: 7,
-    name: "Hydralazine 25 mg tablet",
-    directions: "Take 1 Tab by mouth two(2) times daily",
+    name: "Hydralazine",
+    dosage: "25 mg tablet",
+    instructions: "Take 1 Tab by mouth two(2) times daily",
+    doctor: "Dr. Sameer Waheed",
+    type: "heart",
     common: "Apresoline",
     rx: "#######",
     treatment: "High Blood Pressure",
   },
   {
     number: 8,
-    name: "Montelukast SOD 10 mg tablet",
-    directions: "Take 1 Tab by mouth one(1) time daily",
+    name: "Montelukast SOD",
+    dosage: "10 mg tablet",
+    instructions: "Take 1 Tab by mouth one(1) time daily",
+    doctor: "Dr. Edward A Schuka",
+    type: "other",
     common: "Singulair",
     rx: "#######",
     treatment: "Asthma",
   },
   {
     number: 9,
-    name: "Aspirin 81 mg",
-    directions: "Take 1 Tab by mouth one(1) time daily",
+    name: "Aspirin",
+    dosage: "81 mg",
+    instructions: "Take 1 Tab by mouth one(1) time daily",
+    doctor: "Dr. Sameer Waheed",
+    type: "heart",
     common: "Baby Aspirin",
     rx: "#######",
     treatment: "Reduce Stroke",
   },
   {
     number: 10,
-    name: "Clopidogrel Bisulfate 75 mg",
-    directions: "Take 1 Tab by mouth one(1) time daily",
+    name: "Clopidogrel Bisulfate",
+    dosage: "75 mg",
+    instructions: "Take 1 Tab by mouth one(1) time daily",
+    doctor: "Dr. Sameer Waheed",
+    type: "heart",
     common: "Plavix",
     rx: "#######",
     treatment: "Prevent blood clots",
   },
   {
     number: 11,
-    name: "Linzess 145 mcg",
-    directions: "1 capsule on empty stomach, 30 min before meal, once a day",
+    name: "Linzess",
+    dosage: "145 mcg",
+    instructions:
+      "1 capsule on empty stomach, 30 min before meal, once a day",
+    doctor: "Dr. Edward A Schuka",
+    type: "other",
     common: "Linaclotide",
     rx: "#######",
     treatment: "irritable bowel syndrome with constipation (IBS-C)",
   },
   {
     number: 12,
-    name: "Mucinex 600 mg",
-    directions: "1 tablet every 12 hrs as needed",
+    name: "Mucinex",
+    dosage: "600 mg",
+    instructions: "1 tablet every 12 hrs as needed",
+    doctor: "Dr. Edward A Schuka",
+    type: "other",
     common: "Guaifenesin",
     rx: "#######",
     treatment:
@@ -140,7 +178,7 @@ function renderPatient() {
 
 function renderPhysicians() {
   const el = document.getElementById('physicians');
-  let html = "<h2>Physicians</h2>";
+  let html = "<h2><i class='fas fa-user-md'></i> Physicians</h2>";
   physicians.forEach((doc) => {
     const phone = `<a href="tel:${doc.phone.replace(/[^+\d]/g, '')}">${doc.phone}</a>`;
     const fax = `<a href="tel:${doc.fax.replace(/[^+\d]/g, '')}">${doc.fax}</a>`;
@@ -170,15 +208,23 @@ function renderMedications() {
   medications.forEach((med) => {
     const link = `https://www.drugs.com/search.php?searchterm=${encodeURIComponent(med.name)}`;
     const li = document.createElement('li');
-    li.className = 'med-item';
+    li.className = `med-item ${med.type}`;
     li.innerHTML = `
       <details>
         <summary class="collapse-summary" data-med-name="${med.name}">${med.number}. <a href="${link}">${med.name}</a></summary>
         <div class="med-details">
           <div class="drug-info-left">
             <div class="info-row">
-              <span class="info-title">Directions:</span>
-              <span class="info-data">${med.directions}</span>
+              <span class="info-title">Dosage:</span>
+              <span class="info-data">${med.dosage}</span>
+            </div>
+            <div class="info-row">
+              <span class="info-title">Instructions:</span>
+              <span class="info-data">${med.instructions}</span>
+            </div>
+            <div class="info-row">
+              <span class="info-title">Prescribing Doctor:</span>
+              <span class="info-data">${med.doctor}</span>
             </div>
             <div class="info-row">
               <span class="info-title">Commonly known as:</span>
@@ -203,10 +249,13 @@ function renderMedications() {
       </details>
     `;
     list.appendChild(li);
-    document.getElementById(`pill-upload-${med.number}`).addEventListener('change', function(e) {
-      handlePillImageUploadForMed(e, med.number);
-    });
+    document
+      .getElementById(`pill-upload-${med.number}`)
+      .addEventListener('change', function (e) {
+        handlePillImageUploadForMed(e, med.number);
+      });
   });
+  attachToggleListeners();
 }
 
 function handlePillImageUploadForMed(event, medNumber) {
@@ -228,7 +277,7 @@ function handlePillImageUploadForMed(event, medNumber) {
 
 function attachToggleListeners() {
   const detailsElements = document.querySelectorAll('.med-item details');
-  detailsElements.forEach(details => {
+  detailsElements.forEach((details) => {
     details.addEventListener('toggle', () => {
       const header = document.getElementById('sticky-header');
       if (details.open) {
@@ -245,8 +294,45 @@ function attachToggleListeners() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function initUI() {
+  const modeBtn = document.getElementById('mode-toggle');
+  modeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    const icon = modeBtn.querySelector('i');
+    if (document.body.classList.contains('light-mode')) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    } else {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+    }
+  });
+
+  document.getElementById('print-btn').addEventListener('click', () => {
+    window.print();
+  });
+
+  document.getElementById('pdf-btn').addEventListener('click', () => {
+    window.print();
+  });
+
+  const qr = document.createElement('img');
+  qr.src =
+    'https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=' +
+    encodeURIComponent(window.location.href);
+  qr.alt = 'QR code';
+  document.getElementById('qr-container').appendChild(qr);
+
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('sidebar-toggle');
+  toggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
   renderPatient();
   renderPhysicians();
   renderMedications();
+  initUI();
 });
