@@ -48,8 +48,12 @@ function renderPhysicians() {
   const el = document.getElementById('physicians');
   let html = '<h2>Physicians</h2>';
   physicians.forEach(doc => {
-    html += `<div class="physician"><strong>${doc.letter}. ${doc.name}</strong> - ${doc.specialty}<br>
-      P: ${doc.phone} | F: ${doc.fax}<br>${doc.address}</div>`;
+    html += `<div class="physician">
+      <p class="phys-name"><strong>${doc.letter}. ${doc.name}</strong></p>
+      <p>${doc.specialty}</p>
+      <p>P: ${doc.phone} | F: ${doc.fax}</p>
+      <p>${doc.address}</p>
+    </div>`;
   });
   el.innerHTML = html;
 }
@@ -57,6 +61,7 @@ function renderPhysicians() {
 function renderMedications() {
   const list = document.getElementById('med-list');
   medications.forEach(med => {
+    const link = `https://www.drugs.com/search.php?searchterm=${encodeURIComponent(med.name)}`;
     const li = document.createElement('li');
     li.className = 'med-item';
     li.innerHTML = `<details>
@@ -66,6 +71,7 @@ function renderMedications() {
           <p><strong>Commonly known as:</strong> ${med.common}</p>
           <p><strong>RX:</strong> ${med.rx}</p>
           <p><strong>Treatment:</strong> ${med.treatment}</p>
+          <p><a href="${link}" target="_blank" rel="noopener noreferrer">More information</a></p>
         </div>
       </details>`;
     list.appendChild(li);
