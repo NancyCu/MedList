@@ -1,7 +1,7 @@
 :root {
-  --primary: #00695c;
-  --accent: #00838f;
-  --light-bg: #e0f2f1;
+  --primary: #0277bd;
+  --accent: #00bcd4;
+  --light-bg: #e1f5fe;
   --card-bg: #ffffff;
 }
 
@@ -9,7 +9,7 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+  background: linear-gradient(135deg, #00bcd4, #2196f3);
   color: #333;
 }
 
@@ -58,6 +58,22 @@ h2 {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.patient-card {
+  background: var(--card-bg);
+  border-left: 4px solid var(--primary);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  line-height: 1.6;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: #e3f2fd;
+}
+
+.patient-name {
+  color: var(--accent);
+  font-weight: bold;
+  margin: 0.35rem 0;
+}
+
 .physician p {
   margin: 0.35rem 0;
 }
@@ -65,6 +81,11 @@ h2 {
 .phys-name {
   color: var(--primary);
   font-weight: bold;
+}
+
+strong {
+  color: var(--primary);
+  font-weight: 700;
 }
 
 .med-list {
@@ -83,16 +104,17 @@ h2 {
 
 .med-item summary {
   padding: 1rem;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
-  background: #b2dfdb;
-  color: #004d40;
+  background: #b3e5fc;
+  color: var(--accent);
   transition: background 0.3s ease;
 }
 
 .med-item summary a {
-  color: #004d40;
+  color: var(--accent);
   text-decoration: none;
+  font-weight: 700;
 }
 
 .med-item summary a:hover {
@@ -100,7 +122,7 @@ h2 {
 }
 
 .med-item summary:hover {
-  background: #80cbc4;
+  background: #81d4fa;
 }
 
 .med-details {
@@ -110,30 +132,35 @@ h2 {
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: linear-gradient(135deg, #37474f, #263238);
+    background: linear-gradient(135deg, #0d47a1, #006064);
     color: #eceff1;
   }
 
   .physician {
-    background: #455a64;
-    border-left-color: #80cbc4;
+    background: #1e3a5f;
+    border-left-color: #26c6da;
+  }
+
+  .patient-card {
+    background: #1e3a5f;
+    border-left-color: var(--primary);
   }
 
   .med-item {
-    background: #455a64;
+    background: #1e3a5f;
   }
 
   .med-item summary {
-    background: #607d8b;
-    color: #e0f2f1;
+    background: #01579b;
+    color: #80deea;
   }
 
   .med-item summary a {
-    color: #e0f2f1;
+    color: #80deea;
   }
 
   .med-details {
-    background: #546e7a;
+    background: #0d47a1;
   }
 }
 

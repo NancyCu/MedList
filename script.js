@@ -133,12 +133,15 @@ function renderPatient() {
     patient.address.replace(/<br>/g, " "),
   );
   const addressLink = `<a href="https://maps.google.com/?q=${addressQuery}" target="_blank" rel="noopener noreferrer">${patient.address}</a>`;
-  el.innerHTML = `<h2>Patient</h2>
-    <p><strong>${patient.name}</strong><br>
-    Mobile: ${phoneLink}<br>
-    Email: ${emailLink}<br>
-    ${addressLink}<br>
-    Birthday: ${patient.birthday}</p>`;
+el.innerHTML = `
+  <div class="patient-card">
+    <p class="patient-name"><strong>${patient.name}</strong></p>
+    <p>Mobile: ${phoneLink}</p>
+    <p>Email: ${emailLink}</p>
+    <p>${addressLink}</p>
+    <p>Birthday: ${patient.birthday}</p>
+  </div>`;
+
 }
 
 function renderPhysicians() {
@@ -175,22 +178,31 @@ function renderMedications() {
           <p><strong>Treatment:</strong> ${med.treatment}</p>
         </div>
       </details>`;
-    const details = li.querySelector("details");
-    const summary = details.querySelector("summary");
-    details.addEventListener("toggle", () => {
-      const header = document.getElementById("sticky-header");
-      if (details.open) {
-        document.querySelectorAll(".med-item details[open]").forEach((d) => {
+const details = li.querySelector("details");
+const summary = details.querySelector("summary");
+details.addEventListener("toggle", () => {
+  const header = document.getElementById("sticky-header");
+
+  if (details.open) {
+    document.querySelectorAll(".med-item details[open]").forEach((d) => {
+      if (d !== details) {
+        d.open = false;
+      }
+    });
+
           if (d !== details) {
             d.open = false;
           }
         });
-        header.textContent = summary.dataset.medName;
-      } else {
-        const openDetails = document.querySelector(".med-item details[open]");
-        header.textContent = openDetails
-          ? openDetails.querySelector("summary").dataset.medName
-          : "Medication List";
+  if (details.open) {
+    const openDetails = document.querySelector(".med-item details[open]");
+    header.textContent = openDetails
+      ? openDetails.querySelector("summary").dataset.medName
+      : "Medication List";
+  } else {
+    header.textContent = summary.dataset.medName;
+  }
+
       }
     });
     list.appendChild(li);
