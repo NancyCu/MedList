@@ -1,16 +1,20 @@
 :root {
-  --primary: #0277bd;
+  --bg-start: #0a192f;
+  --bg-end: #1c2b46;
   --accent: #00bcd4;
-  --light-bg: #e1f5fe;
-  --card-bg: #ffffff;
+  --accent-light: #4dd0e1;
+  --text-color: #e0f7fa;
+  --card-bg: rgba(255, 255, 255, 0.05);
 }
 
 body {
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #00bcd4, #2196f3);
-  color: #333;
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  color: var(--text-color);
 }
 
 .container {
@@ -22,14 +26,14 @@ body {
 h1,
 h2 {
   text-align: center;
-  color: var(--primary);
+  color: var(--accent-light);
 }
 
 #sticky-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--light-bg);
+  background: var(--bg-start);
   margin: 0;
   padding: 1rem 0;
 }
@@ -62,7 +66,7 @@ h2 {
   font-weight: 700;
   cursor: pointer;
   background: #e3f2fd;
-  color: var(--primary);
+  color: var(--accent-light);
 }
 
 .physician > .collapse-summary:hover {
@@ -94,12 +98,13 @@ h2 {
 
 .patient-card {
   background: var(--card-bg);
-  border-left: 4px solid var(--primary);
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
+  border-left: 4px solid var(--accent);
+  padding: 1rem;
+  border-radius: 12px;
   line-height: 1.6;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  background: #e3f2fd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 4rem;
 }
 
 .patient-name {
@@ -114,12 +119,12 @@ h2 {
 }
 
 .phys-name {
-  color: var(--primary);
+  color: var(--accent-light);
   font-weight: bold;
 }
 
 strong {
-  color: var(--primary);
+  color: var(--accent-light);
   font-weight: 700;
 }
 
@@ -129,25 +134,32 @@ strong {
   margin: 0;
 }
 
+
 .med-item {
   background: var(--card-bg);
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.med-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .med-item summary {
   padding: 1rem;
   font-weight: 700;
   cursor: pointer;
-  background: #e3f2fd;
-  color: #ff4081; /* changed from var(--accent) to a brighter color */
+  background: transparent;
+  color: var(--accent-light);
   transition: background 0.3s ease;
 }
 
 .med-item summary a {
-  color: #ff4081; /* changed from var(--accent) to a brighter color */
+  color: var(--accent-light);
   text-decoration: none;
   font-weight: 700;
 }
@@ -157,7 +169,7 @@ strong {
 }
 
 .med-item summary:hover {
-  background: #bbdefb;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 
@@ -176,15 +188,142 @@ strong {
   content: "\2795";
   font-size: 1.5rem;
   margin-right: 0.5rem;
+  transition: transform 0.3s ease;
 }
 
 details[open] > .collapse-summary::before {
   content: "\2796";
+  transform: rotate(180deg);
 }
 
 .med-details {
   padding: 0 1rem 1rem;
-  background: var(--light-bg);
+  background: var(--card-bg);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+details[open] .med-details {
+  max-height: 1000px;
+}
+
+/* Color coding for medication types */
+.med-item.heart {
+  border-left: 4px solid #ff5252;
+}
+.med-item.vitamin {
+  border-left: 4px solid #4caf50;
+}
+.med-item.other {
+  border-left: 4px solid var(--accent);
+}
+
+/* Sidebar navigation */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 180px;
+  background: rgba(0, 0, 0, 0.6);
+  padding-top: 1rem;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.collapsed {
+  transform: translateX(-100%);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 1rem 0;
+}
+
+.sidebar a {
+  color: var(--accent-light);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+#sidebar-toggle {
+  background: none;
+  border: none;
+  color: var(--accent-light);
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.header-actions button {
+  background: var(--card-bg);
+  border: none;
+  color: var(--accent-light);
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.header-actions button:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#qr-container img {
+  width: 80px;
+  height: 80px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+body.light-mode {
+  --bg-start: #f5f5f5;
+  --bg-end: #e0e0e0;
+  --text-color: #333;
+  --card-bg: #ffffff;
+}
+
+@media print {
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+  .sidebar,
+  .header-actions,
+  #sidebar-toggle,
+  #qr-container {
+    display: none;
+  }
+  .med-item {
+    box-shadow: none;
+  }
 }
 
 .drug-info-left,
@@ -206,7 +345,7 @@ details[open] > .collapse-summary::before {
 
 .info-title {
   font-weight: 700;
-  color: var(--primary);
+  color: var(--accent-light);
   padding-right: 1rem;
   white-space: nowrap;
 }
@@ -224,7 +363,7 @@ details[open] > .collapse-summary::before {
 
   .physician > .collapse-summary {
     background: #0277bd;
-    color: #ff4081;
+    color: var(--accent-light);
   }
 
   .physician > .collapse-summary:hover {
@@ -233,7 +372,7 @@ details[open] > .collapse-summary::before {
 
   .patient-card {
     background: #1e3a5f;
-    border-left-color: var(--primary);
+    border-left-color: var(--accent);
   }
 
   .med-item {
@@ -242,7 +381,7 @@ details[open] > .collapse-summary::before {
 
   .med-item summary {
     background: #0277bd;
-    color: #ff4081; /* changed from #80deea to a brighter color */
+    color: var(--accent-light);
   }
 
   .med-item summary:hover {
@@ -250,7 +389,7 @@ details[open] > .collapse-summary::before {
   }
 
   .med-item summary a {
-    color: #ff4081; /* changed from #80deea to a brighter color */
+    color: var(--accent-light);
   }
 
   .med-details {

@@ -6,6 +6,19 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="theme-color" content="#0277bd" />
     <title>Medication List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-1P8dHXwPuZLZjPydcrpmS0GDAi/7++UZ5EKeosFVJeFt3uTJS3BM4tiTqcKoy0eZZ+j9Rn2TK1Z4Vw7S4GZ5wQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="styles.css" />
     <script>
       if (sessionStorage.getItem('loggedIn') !== 'true') {
@@ -14,12 +27,37 @@
     </script>
   </head>
   <body>
+    <nav id="sidebar" class="sidebar">
+      <button id="sidebar-toggle" aria-label="Toggle Navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul>
+        <li><a href="#patient"><i class="fas fa-user"></i> Patient</a></li>
+        <li><a href="#physicians"><i class="fas fa-user-md"></i> Physicians</a></li>
+        <li><a href="#medications"><i class="fas fa-pills"></i> Medications</a></li>
+      </ul>
+    </nav>
     <div class="container">
-      <h1 id="sticky-header">Medication List</h1>
+      <header class="page-header">
+        <h1 id="sticky-header">Medication List</h1>
+        <div class="header-actions">
+          <button id="mode-toggle" aria-label="Toggle light or dark mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button id="print-btn" aria-label="Print list">
+            <i class="fas fa-print"></i>
+          </button>
+          <button id="pdf-btn" aria-label="Download PDF">
+            <i class="fas fa-file-pdf"></i>
+          </button>
+          <div id="qr-container"></div>
+        </div>
+      </header>
+
       <section id="patient"></section>
       <section id="physicians"></section>
-      <section>
-        <h2>Medications</h2>
+      <section id="medications">
+        <h2><i class="fas fa-pills"></i> Medications</h2>
         <ul id="med-list" class="med-list"></ul>
       </section>
     </div>
