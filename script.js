@@ -126,38 +126,39 @@ const medications = [
 ];
 
 function renderPatient() {
-  const el = document.getElementById("patient");
-  const phoneLink = `<a href="tel:${patient.phone.replace(/[^+\d]/g, "")}">${patient.phone}</a>`;
+  const el = document.getElementById('patient');
+  const phoneLink = `<a href="tel:${patient.phone.replace(/[^+\d]/g, '')}">${patient.phone}</a>`;
   const emailLink = `<a href="mailto:${patient.email}">${patient.email}</a>`;
-  const addressQuery = encodeURIComponent(
-    patient.address.replace(/<br>/g, " "),
-  );
-  const addressLink = `<a href="https://maps.google.com/?q=${addressQuery}" target="_blank" rel="noopener noreferrer">${patient.address}</a>`;
-el.innerHTML = `
-  <div class="patient-card">
-    <p class="patient-name"><strong>${patient.name}</strong></p>
-    <p>Mobile: ${phoneLink}</p>
-    <p>Email: ${emailLink}</p>
-    <p>${addressLink}</p>
-    <p>Birthday: ${patient.birthday}</p>
-  </div>`;
+  el.innerHTML = `
+    <div class="patient-card">
+      <p class="patient-name"><strong>${patient.name}</strong></p>
+      <p class="patient-address">${patient.address}</p>
+      <p class="patient-info">Mobile: ${phoneLink}<br>Email: ${emailLink}<br>Birthday: ${patient.birthday}</p>
+    </div>
+  `;
 }
 
 function renderPhysicians() {
-  const el = document.getElementById("physicians");
+  const el = document.getElementById('physicians');
   let html = "<h2>Physicians</h2>";
   physicians.forEach((doc) => {
-    const phone = `<a href="tel:${doc.phone.replace(/[^+\d]/g, "")}">${doc.phone}</a>`;
-    const fax = `<a href="tel:${doc.fax.replace(/[^+\d]/g, "")}">${doc.fax}</a>`;
-    const mapQuery = encodeURIComponent(doc.address.replace(/<br>/g, " "));
+    const phone = `<a href="tel:${doc.phone.replace(/[^+\d]/g, '')}">${doc.phone}</a>`;
+    const fax = `<a href="tel:${doc.fax.replace(/[^+\d]/g, '')}">${doc.fax}</a>`;
+    const mapQuery = encodeURIComponent(doc.address.replace(/<br>/g, ' '));
     const address = `<a href="https://maps.google.com/?q=${mapQuery}" target="_blank" rel="noopener noreferrer">${doc.address}</a>`;
-    html += `<div class="physician">
-      <p class="phys-name"><strong>${doc.letter}. ${doc.name}</strong></p>
-      <p>${doc.specialty}</p>
-      <p>P: ${phone}</p>
-      <p>F: ${fax}</p>
-      <p>${address}</p>
-    </div>`;
+    html += `
+      <div class="physician">
+        <div class="physician-info">
+          <p class="phys-name"><strong>${doc.letter}. ${doc.name}</strong></p>
+          <p>${doc.specialty}</p>
+          <p>P: ${phone}</p>
+          <p>F: ${fax}</p>
+          <p>${address}</p>
+        </div>
+        <div class="physician-map">
+          <iframe src="https://maps.google.com/maps?q=${mapQuery}&output=embed" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>`;
   });
   el.innerHTML = html;
 }
@@ -177,34 +178,27 @@ function renderMedications() {
           <p><strong>Treatment:</strong> ${med.treatment}</p>
         </div>
       </details>`;
-const details = li.querySelector("details");
-const summary = details.querySelector("summary");
-details.addEventListener("toggle", () => {
-  const header = document.getElementById("sticky-header");
+    list.appendChild(li);
+  });
+  attachToggleListeners();
+}
 
-  if (details.open) {
-    document.querySelectorAll(".med-item details[open]").forEach((d) => {
-      if (d !== details) {
-        d.open = false;
-      }
-    });
-
+function attachToggleListeners() {
+  const detailsElements = document.querySelectorAll('.med-item details');
+  detailsElements.forEach(details => {
+    details.addEventListener('toggle', () => {
+      const header = document.getElementById('sticky-header');
+      if (details.open) {
+        document.querySelectorAll('.med-item details[open]').forEach((d) => {
           if (d !== details) {
             d.open = false;
           }
         });
-  if (details.open) {
-    const openDetails = document.querySelector(".med-item details[open]");
-    header.textContent = openDetails
-      ? openDetails.querySelector("summary").dataset.medName
-      : "Medication List";
-  } else {
-    header.textContent = summary.dataset.medName;
-  }
-
+        header.textContent = details.querySelector('summary').dataset.medName;
+      } else {
+        header.textContent = 'Medication List';
       }
     });
-    list.appendChild(li);
   });
 }
 

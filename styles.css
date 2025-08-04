@@ -56,6 +56,25 @@ h2 {
   border-radius: 6px;
   line-height: 1.6;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.physician-info {
+  flex: 1;
+}
+
+.physician-map {
+  width: 200px;
+  margin-left: 1rem;
+}
+
+.physician-map iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  border-radius: 4px;
 }
 
 .patient-card {
@@ -70,7 +89,8 @@ h2 {
 
 .patient-name {
   color: var(--accent);
-  font-weight: bold;
+  font-weight: 900; /* increased boldness */
+  font-size: 1.75rem; /* increased size */
   margin: 0.35rem 0;
 }
 
@@ -107,12 +127,12 @@ strong {
   font-weight: 700;
   cursor: pointer;
   background: #b3e5fc;
-  color: var(--accent);
+  color: #ff4081; /* changed from var(--accent) to a brighter color */
   transition: background 0.3s ease;
 }
 
 .med-item summary a {
-  color: var(--accent);
+  color: #ff4081; /* changed from var(--accent) to a brighter color */
   text-decoration: none;
   font-weight: 700;
 }
@@ -152,11 +172,11 @@ strong {
 
   .med-item summary {
     background: #01579b;
-    color: #80deea;
+    color: #ff4081; /* changed from #80deea to a brighter color */
   }
 
   .med-item summary a {
-    color: #80deea;
+    color: #ff4081; /* changed from #80deea to a brighter color */
   }
 
   .med-details {
@@ -197,6 +217,19 @@ strong {
 
   .med-item summary {
     font-size: 1.1rem;
+  }
+
+  .physician {
+    flex-direction: column;
+  }
+
+  .physician-map {
+    width: 100%;
+    margin: 0.5rem 0 0;
+  }
+
+  .physician-map iframe {
+    height: 150px;
   }
 }
 
