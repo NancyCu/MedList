@@ -3,7 +3,7 @@
 MedList is a responsive, client-side web app that displays a patient's medications along with physician and contact information.
 
 ## Features
-- Password-protected login (default password `thuoc1952`)
+- Password-protected login (default password `drugBD`)
 - Displays patient demographics and physicians with clickable phone numbers and map links
 - Dynamically builds a medication list with expandable details and a sticky header that updates to the selected medication
 - Responsive layout with light/dark mode using only HTML, CSS, and vanilla JavaScript
