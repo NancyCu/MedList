@@ -256,6 +256,10 @@ details[open] .med-details {
 }
 
 .nav-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
   position: fixed;
   top: 1rem;
   left: 1rem;
@@ -265,6 +269,7 @@ details[open] .med-details {
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 1100;
+
 }
 
 .page-header {
