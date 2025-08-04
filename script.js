@@ -147,18 +147,19 @@ function renderPhysicians() {
     const mapQuery = encodeURIComponent(doc.address.replace(/<br>/g, ' '));
     const address = `<a href="https://maps.google.com/?q=${mapQuery}" target="_blank" rel="noopener noreferrer">${doc.address}</a>`;
     html += `
-      <div class="physician">
-        <div class="physician-info">
-          <p class="phys-name"><strong>${doc.letter}. ${doc.name}</strong></p>
-          <p>${doc.specialty}</p>
-          <p>P: ${phone}</p>
-          <p>F: ${fax}</p>
-          <p>${address}</p>
+      <details class="physician">
+        <summary class="collapse-summary"><strong>${doc.letter}. ${doc.name}</strong> - ${doc.specialty}</summary>
+        <div class="physician-details">
+          <div class="physician-info">
+            <p>P: ${phone}</p>
+            <p>F: ${fax}</p>
+            <p>${address}</p>
+          </div>
+          <div class="physician-map">
+            <iframe src="https://maps.google.com/maps?q=${mapQuery}&output=embed" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
-        <div class="physician-map">
-          <iframe src="https://maps.google.com/maps?q=${mapQuery}&output=embed" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>`;
+      </details>`;
   });
   el.innerHTML = html;
 }
@@ -172,7 +173,7 @@ function renderMedications() {
     li.className = 'med-item';
     li.innerHTML = `
       <details>
-        <summary data-med-name="${med.name}">${med.number}. <a href="${link}">${med.name}</a></summary>
+        <summary class="collapse-summary" data-med-name="${med.name}">${med.number}. <a href="${link}">${med.name}</a></summary>
         <div class="med-details">
           <div class="drug-info-left">
             <div class="info-row">
