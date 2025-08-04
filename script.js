@@ -174,11 +174,12 @@ function renderMedications() {
       <details>
         <summary data-med-name="${med.name}">${med.number}. <a href="${link}">${med.name}</a></summary>
         <div class="med-details">
-          <p><strong>Directions:</strong> ${med.directions}</p>
-          <p><strong>Commonly known as:</strong> ${med.common}</p>
-          <p><strong>RX:</strong> ${med.rx}</p>
-          <p><strong>Treatment:</strong> ${med.treatment}</p>
-          <!-- Image Upload Section for this medication -->
+          <div class="drug-info-left">
+            <p><strong>Directions:</strong> ${med.directions}</p>
+            <p><strong>Commonly known as:</strong> ${med.common}</p>
+            <p><strong>RX:</strong> ${med.rx}</p>
+            <p><strong>Treatment:</strong> ${med.treatment}</p>
+          </div>
           <div class="med-pill-upload">
             <div class="pill-image-box" id="pill-image-box-${med.number}">
               <!-- Uploaded image will appear here -->
