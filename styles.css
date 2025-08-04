@@ -259,6 +259,17 @@ details[open] .med-details {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  color: var(--accent-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1100;
+
 }
 
 .page-header {
