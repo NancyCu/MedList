@@ -52,13 +52,28 @@ h2 {
 .physician {
   background: var(--card-bg);
   border-left: 4px solid var(--accent);
-  padding: 0.75rem 1rem;
   border-radius: 6px;
   line-height: 1.6;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.physician > .collapse-summary {
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #e3f2fd;
+  color: var(--primary);
+}
+
+.physician > .collapse-summary:hover {
+  background: #bbdefb;
+}
+
+.physician-details {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding: 0.75rem 1rem;
 }
 
 .physician-info {
@@ -145,6 +160,28 @@ strong {
   background: #bbdefb;
 }
 
+
+.collapse-summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.collapse-summary::-webkit-details-marker {
+  display: none;
+}
+
+.collapse-summary::before {
+  content: "\2795";
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+details[open] > .collapse-summary::before {
+  content: "\2796";
+}
+
 .med-details {
   padding: 0 1rem 1rem;
   background: var(--light-bg);
@@ -183,6 +220,15 @@ strong {
   .physician {
     background: #1e3a5f;
     border-left-color: #26c6da;
+  }
+
+  .physician > .collapse-summary {
+    background: #0277bd;
+    color: #ff4081;
+  }
+
+  .physician > .collapse-summary:hover {
+    background: #0288d1;
   }
 
   .patient-card {
@@ -247,7 +293,7 @@ strong {
     font-size: 1.1rem;
   }
 
-  .physician {
+  .physician-details {
     flex-direction: column;
   }
 
