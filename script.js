@@ -51,7 +51,8 @@ function renderPhysicians() {
     html += `<div class="physician">
       <p class="phys-name"><strong>${doc.letter}. ${doc.name}</strong></p>
       <p>${doc.specialty}</p>
-      <p>P: ${doc.phone} | F: ${doc.fax}</p>
+      <p>P: ${doc.phone}</p>
+      <p>F: ${doc.fax}</p>
       <p>${doc.address}</p>
     </div>`;
   });
@@ -65,13 +66,12 @@ function renderMedications() {
     const li = document.createElement('li');
     li.className = 'med-item';
     li.innerHTML = `<details>
-        <summary>${med.number}. ${med.name}</summary>
+        <summary>${med.number}. <a href="${link}" target="_blank" rel="noopener noreferrer">${med.name}</a></summary>
         <div class="med-details">
           <p><strong>Directions:</strong> ${med.directions}</p>
           <p><strong>Commonly known as:</strong> ${med.common}</p>
           <p><strong>RX:</strong> ${med.rx}</p>
           <p><strong>Treatment:</strong> ${med.treatment}</p>
-          <p><a href="${link}" target="_blank" rel="noopener noreferrer">More information</a></p>
         </div>
       </details>`;
     list.appendChild(li);

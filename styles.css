@@ -1,3 +1,10 @@
+:root {
+  --primary: #00695c;
+  --accent: #00838f;
+  --light-bg: #e0f2f1;
+  --card-bg: #ffffff;
+}
+
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   margin: 0;
@@ -15,11 +22,11 @@ body {
 h1,
 h2 {
   text-align: center;
-  color: #00695c;
+  color: var(--primary);
 }
 
 h2 {
-  color: #00838f;
+  color: var(--accent);
 }
 
 #patient,
@@ -27,22 +34,28 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
+#physicians {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
 .physician {
-  background: #fff;
-  border-left: 4px solid #00838f;
+  background: var(--card-bg);
+  border-left: 4px solid var(--accent);
   padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
   border-radius: 6px;
-  line-height: 1.5;
+  line-height: 1.6;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .physician p {
-  margin: 0.25rem 0;
+  margin: 0.35rem 0;
 }
 
 .phys-name {
-  color: #00695c;
+  color: var(--primary);
   font-weight: bold;
 }
 
@@ -53,7 +66,7 @@ h2 {
 }
 
 .med-item {
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 8px;
   margin-bottom: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -69,22 +82,51 @@ h2 {
   transition: background 0.3s ease;
 }
 
+.med-item summary a {
+  color: #004d40;
+  text-decoration: none;
+}
+
+.med-item summary a:hover {
+  text-decoration: underline;
+}
+
 .med-item summary:hover {
   background: #80cbc4;
 }
 
 .med-details {
   padding: 0 1rem 1rem;
-  background: #e0f2f1;
+  background: var(--light-bg);
 }
 
-.med-details a {
-  color: #00695c;
-  text-decoration: none;
-}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #37474f, #263238);
+    color: #eceff1;
+  }
 
-.med-details a:hover {
-  text-decoration: underline;
+  .physician {
+    background: #455a64;
+    border-left-color: #80cbc4;
+  }
+
+  .med-item {
+    background: #455a64;
+  }
+
+  .med-item summary {
+    background: #607d8b;
+    color: #e0f2f1;
+  }
+
+  .med-item summary a {
+    color: #e0f2f1;
+  }
+
+  .med-details {
+    background: #546e7a;
+  }
 }
 
 @media (max-width: 600px) {
