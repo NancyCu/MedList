@@ -5,7 +5,7 @@ const errorEl = document.getElementById('error');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const password = passwordInput.value;
-  if (password === 'medlist123') {
+  if (password === 'thuoc1952') {
     sessionStorage.setItem('loggedIn', 'true');
     window.location.href = 'index.html';
   } else {
