@@ -11,7 +11,7 @@ MedList is a responsive, client-side web app that displays a patient's medicatio
 ## Getting Started
 1. Clone this repository.
 2. Open `login.html` in a modern browser.
-3. Enter the password `thuoc1952` to view the medication list.
+3. Enter the password `drugBD` to view the medication list.
 4. Click any medication to expand its details; click again to collapse.
 
 ## Customization
