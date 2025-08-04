@@ -43,11 +43,13 @@ const medications = [
 function renderPatient() {
   const el = document.getElementById('patient');
   el.innerHTML = `<h2>Patient</h2>
-    <p><strong>${patient.name}</strong><br>
-    Mobile: ${patient.phone}<br>
-    Email: ${patient.email}<br>
-    ${patient.address}<br>
-    Birthday: ${patient.birthday}</p>`;
+    <div class="patient-card">
+      <p class="patient-name"><strong>${patient.name}</strong></p>
+      <p>Mobile: ${patient.phone}</p>
+      <p>Email: ${patient.email}</p>
+      <p>${patient.address}</p>
+      <p>Birthday: ${patient.birthday}</p>
+    </div>`;
 }
 
 function renderPhysicians() {
