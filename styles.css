@@ -25,6 +25,15 @@ h2 {
   color: var(--primary);
 }
 
+#sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--light-bg);
+  margin: 0;
+  padding: 1rem 0;
+}
+
 h2 {
   color: var(--accent);
 }
@@ -39,7 +48,6 @@ h2 {
   flex-direction: column;
   gap: 1rem;
 }
-
 
 .physician {
   background: var(--card-bg);
