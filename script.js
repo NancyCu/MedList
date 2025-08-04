@@ -294,6 +294,20 @@ function attachToggleListeners() {
   });
 }
 
+function expandAllAndPrint() {
+  const details = document.querySelectorAll('details');
+  const states = Array.from(details).map((d) => d.open);
+  details.forEach((d) => (d.open = true));
+  window.addEventListener(
+    'afterprint',
+    () => {
+      details.forEach((d, i) => (d.open = states[i]));
+    },
+    { once: true }
+  );
+  window.print();
+}
+
 function initUI() {
   const modeBtn = document.getElementById('mode-toggle');
   modeBtn.addEventListener('click', () => {
@@ -308,13 +322,9 @@ function initUI() {
     }
   });
 
-  document.getElementById('print-btn').addEventListener('click', () => {
-    window.print();
-  });
+  document.getElementById('print-btn').addEventListener('click', expandAllAndPrint);
 
-  document.getElementById('pdf-btn').addEventListener('click', () => {
-    window.print();
-  });
+  document.getElementById('pdf-btn').addEventListener('click', expandAllAndPrint);
 
   const qr = document.createElement('img');
   qr.src =
@@ -323,10 +333,16 @@ function initUI() {
   qr.alt = 'QR code';
   document.getElementById('qr-container').appendChild(qr);
 
-  const sidebar = document.getElementById('sidebar');
-  const toggle = document.getElementById('sidebar-toggle');
+  const menu = document.getElementById('nav-menu');
+  const toggle = document.getElementById('nav-toggle');
   toggle.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+
+  document.querySelectorAll('#nav-menu a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+    });
   });
 }
 
