@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+#patient, #physicians {
+  margin-bottom: 1.5rem;
+}
+
+.med-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.med-item {
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.med-item summary {
+  padding: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.med-details {
+  padding: 0 1rem 1rem;
+}
+
+@media (min-width: 600px) {
+  .container {
+    padding: 2rem;
+  }
+}
