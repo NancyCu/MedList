@@ -39,20 +39,10 @@
       </ul>
     </nav>
     <div class="container">
-      <header class="page-header">
-        <h1 id="sticky-header">Medication List</h1>
-        <div class="header-actions">
-          <button id="print-btn" aria-label="Print list">
-            <i class="fas fa-print"></i>
-            <span>Print</span>
-          </button>
-          <button id="mode-toggle" aria-label="Toggle light or dark mode">
-            <i class="fas fa-moon"></i>
-            <span>Dark Mode</span>
-          </button>
+        <header class="page-header">
+          <h1 id="sticky-header">Medication List</h1>
           <div id="qr-container"></div>
-        </div>
-      </header>
+        </header>
 
       <section id="patient"></section>
       <section id="physicians"></section>
@@ -60,7 +50,17 @@
         <h2><i class="fas fa-pills"></i> Medications</h2>
         <ul id="med-list" class="med-list"></ul>
       </section>
-    </div>
-    <script src="script.js"></script>
-  </body>
-</html>
+      </div>
+      <footer class="page-footer">
+        <button id="print-btn" aria-label="Print list">
+          <i class="fas fa-print"></i>
+          <span>Print</span>
+        </button>
+        <button id="mode-toggle" aria-label="Toggle light or dark mode">
+          <i class="fas fa-moon"></i>
+          <span>Dark Mode</span>
+        </button>
+      </footer>
+      <script src="script.js"></script>
+    </body>
+  </html>
