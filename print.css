@@ -76,6 +76,8 @@ body {
   text-decoration: none;
   text-align: center;
   display: inline-block;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .action-button:active {
