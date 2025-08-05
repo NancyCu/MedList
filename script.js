@@ -331,13 +331,8 @@ function initUI() {
     }
   });
 
-  // Attach to print/download PDF buttons
+  // Attach to print button
   document.getElementById('print-btn').addEventListener('click', () => {
-    expandAllMedicationsForPrint();
-    window.print();
-  });
-
-  document.getElementById('pdf-btn').addEventListener('click', () => {
     expandAllMedicationsForPrint();
     window.print();
   });
