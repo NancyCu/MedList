@@ -168,11 +168,14 @@ function renderPatient() {
   const phoneLink = `<a href="tel:${patient.phone.replace(/[^+\d]/g, '')}">${patient.phone}</a>`;
   const emailLink = `<a href="mailto:${patient.email}">${patient.email}</a>`;
   el.innerHTML = `
-    <div class="patient-card">
-      <p class="patient-name"><strong>${patient.name}</strong></p>
-      <p class="patient-address">${patient.address}</p>
-      <p class="patient-info">Mobile: ${phoneLink}<br>Email: ${emailLink}<br>Birthday: ${patient.birthday}</p>
-    </div>
+    <h2><i class="fas fa-user"></i> Patient Info</h2>
+    <details class="patient-card">
+      <summary class="patient-name collapse-summary">${patient.name}</summary>
+      <div class="patient-details">
+        <p class="patient-address">${patient.address}</p>
+        <p class="patient-info">Mobile: ${phoneLink}<br>Email: ${emailLink}<br>Birthday: ${patient.birthday}</p>
+      </div>
+    </details>
   `;
 }
 
@@ -309,7 +312,7 @@ function expandAllAndPrint() {
 }
 
 function expandAllMedicationsForPrint() {
-  document.querySelectorAll('.med-item details').forEach(details => {
+  document.querySelectorAll('details').forEach(details => {
     details.open = true;
   });
 }
