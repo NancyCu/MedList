@@ -304,6 +304,7 @@ function expandAllAndPrint() {
     'afterprint',
     () => {
       details.forEach((d) => (d.open = false));
+      window.location.reload();
     },
     { once: true }
   );
