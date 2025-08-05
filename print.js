@@ -27,7 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
     container.appendChild(card);
   });
 
-  document.getElementById('print-btn').addEventListener('click', () => {
-    window.print();
-  });
+  document.querySelectorAll('.print-btn').forEach((btn) =>
+    btn.addEventListener('click', () => window.print())
+  );
+
+  document.querySelectorAll('.home-btn').forEach((btn) =>
+    btn.addEventListener('click', () => {
+      window.location.href = 'index.html';
+    })
+  );
 });
