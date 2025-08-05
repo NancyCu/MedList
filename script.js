@@ -300,14 +300,15 @@ function attachToggleListeners() {
 function expandAllAndPrint() {
   const details = document.querySelectorAll('details');
   details.forEach((d) => (d.open = true));
-  window.addEventListener(
-    'afterprint',
-    () => {
-      details.forEach((d) => (d.open = false));
-      window.location.reload();
-    },
-    { once: true }
-  );
+  const handleDone = () => {
+    details.forEach((d) => (d.open = false));
+    window.removeEventListener('focus', handleDone);
+    window.removeEventListener('afterprint', handleDone);
+    window.location.reload();
+  };
+  window.addEventListener('afterprint', handleDone, { once: true });
+  window.addEventListener('focus', handleDone, { once: true });
+
   window.print();
 }
 
