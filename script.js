@@ -297,21 +297,6 @@ function attachToggleListeners() {
   });
 }
 
-function expandAllAndPrint() {
-  const details = document.querySelectorAll('details');
-  details.forEach((d) => (d.open = true));
-  const handleDone = () => {
-    details.forEach((d) => (d.open = false));
-    window.removeEventListener('focus', handleDone);
-    window.removeEventListener('afterprint', handleDone);
-    window.location.reload();
-  };
-  window.addEventListener('afterprint', handleDone, { once: true });
-  window.addEventListener('focus', handleDone, { once: true });
-
-  window.print();
-}
-
 function initUI() {
   const modeBtn = document.getElementById('mode-toggle');
   modeBtn.addEventListener('click', () => {
@@ -328,7 +313,20 @@ function initUI() {
 
   // Attach to print button
   document.getElementById('print-btn').addEventListener('click', () => {
-    expandAllAndPrint();
+    const meds = medications.map(
+      ({ number, name, dosage, common, rx, instructions, treatment }) => ({
+        number,
+        name,
+        dosage,
+        common,
+        rx,
+        instructions,
+        treatment,
+      })
+    );
+    localStorage.setItem('medications', JSON.stringify(meds));
+    localStorage.setItem('patient', JSON.stringify(patient));
+    window.open('print.html', '_blank');
   });
 
   const qr = document.createElement('img');
