@@ -328,30 +328,40 @@ details[open] .med-details {
   gap: 0.5rem;
 }
 
+
 .header-actions {
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
 }
 
+
 .header-actions button {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  background: var(--card-bg);
+  background: linear-gradient(135deg, #0277bd, #00bcd4);
   border: none;
-  color: var(--accent-light);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  color: #fff;
   padding: 0.5rem 0.75rem;
   min-width: 130px;
   justify-content: center;
-  border-radius: 4px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .header-actions button:hover {
-  background: rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+.header-actions button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .header-actions button span {

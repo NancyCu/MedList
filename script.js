@@ -331,13 +331,8 @@ function initUI() {
     }
   });
 
-  // Attach to print/download PDF buttons
+  // Attach to print button
   document.getElementById('print-btn').addEventListener('click', () => {
-    expandAllMedicationsForPrint();
-    window.print();
-  });
-
-  document.getElementById('pdf-btn').addEventListener('click', () => {
     expandAllMedicationsForPrint();
     window.print();
   });
@@ -359,11 +354,6 @@ function initUI() {
     link.addEventListener('click', () => {
       menu.classList.remove('open');
     });
-  });
-
-  document.getElementById('menu-toggle').addEventListener('click', function () {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('open');
   });
 }
 

@@ -6,7 +6,7 @@ body * {
 .container, .container * {
   visibility: visible;
 }
-header, nav, .header-actions, #qr-container, #sidebar, #sidebar-toggle, .nav-toggle, #mode-toggle, #print-btn, #pdf-btn {
+header, nav, .header-actions, #qr-container, #sidebar, #sidebar-toggle, .nav-toggle, #mode-toggle, #print-btn {
   display: none !important;
 }
 
