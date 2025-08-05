@@ -299,22 +299,15 @@ function attachToggleListeners() {
 
 function expandAllAndPrint() {
   const details = document.querySelectorAll('details');
-  const states = Array.from(details).map((d) => d.open);
   details.forEach((d) => (d.open = true));
   window.addEventListener(
     'afterprint',
     () => {
-      details.forEach((d, i) => (d.open = states[i]));
+      details.forEach((d) => (d.open = false));
     },
     { once: true }
   );
   window.print();
-}
-
-function expandAllMedicationsForPrint() {
-  document.querySelectorAll('details').forEach(details => {
-    details.open = true;
-  });
 }
 
 function initUI() {
@@ -333,8 +326,7 @@ function initUI() {
 
   // Attach to print button
   document.getElementById('print-btn').addEventListener('click', () => {
-    expandAllMedicationsForPrint();
-    window.print();
+    expandAllAndPrint();
   });
 
   const qr = document.createElement('img');
