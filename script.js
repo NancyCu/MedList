@@ -312,7 +312,8 @@ function initUI() {
   });
 
   // Attach to print button
-  document.getElementById('print-btn').addEventListener('click', () => {
+  document.getElementById('print-btn').addEventListener('click', (e) => {
+    e.preventDefault();
     const meds = medications.map(
       ({ number, name, dosage, common, rx, instructions, treatment }) => ({
         number,
