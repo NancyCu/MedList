@@ -308,6 +308,7 @@ function expandAllAndPrint() {
   };
   window.addEventListener('afterprint', handleDone, { once: true });
   window.addEventListener('focus', handleDone, { once: true });
+
   window.print();
 }
 
