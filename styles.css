@@ -339,19 +339,26 @@ details[open] .med-details {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  background: var(--card-bg);
+  background: var(--accent);
   border: none;
-  color: var(--accent-light);
+  color: #fff;
   padding: 0.5rem 0.75rem;
   min-width: 130px;
   justify-content: center;
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  box-shadow: 0 4px 0 var(--accent-light);
+  transition: background 0.3s ease, transform 0.1s ease,
+    box-shadow 0.1s ease;
 }
 
 .header-actions button:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--accent-light);
+}
+
+.header-actions button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--accent-light);
 }
 
 .header-actions button span {
