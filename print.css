@@ -58,22 +58,28 @@ body {
 .controls {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 }
 
 .action-button {
-  padding: 0.5rem 1.5rem;
-  font-size: 1rem;
-  background: linear-gradient(#f0f0f0, #d9d9d9);
-  border: 1px solid #999;
-  border-radius: 4px;
-  box-shadow: 0 4px #bbb;
+  width: 200px;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  color: #fff;
+  background: linear-gradient(#6cb2eb, #2b6cb0);
+  border: 1px solid #2b6cb0;
+  border-radius: 6px;
+  box-shadow: 0 4px 0 #1a4971;
   cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
 }
 
 .action-button:active {
-  box-shadow: 0 2px #bbb;
+  box-shadow: 0 2px 0 #1a4971;
   transform: translateY(2px);
 }
 
