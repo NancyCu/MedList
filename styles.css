@@ -329,16 +329,14 @@ details[open] .med-details {
 }
 
 
-.header-actions {
+.page-footer {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
   justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
 }
 
-
-.header-actions button {
+.page-footer button {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -346,7 +344,6 @@ details[open] .med-details {
   border: none;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-
   color: #fff;
   padding: 0.5rem 0.75rem;
   min-width: 130px;
@@ -355,25 +352,25 @@ details[open] .med-details {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.header-actions button:hover {
+.page-footer button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
 }
 
-.header-actions button:active {
+.page-footer button:active {
   transform: translateY(0);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.header-actions button span {
+.page-footer button span {
   font-size: 0.875rem;
 }
 
-  #qr-container img {
-    width: 100%;
-    max-width: 80px;
-    height: 80px;
-  }
+#qr-container img {
+  width: 100%;
+  max-width: 80px;
+  height: 80px;
+}
 
 
 body.light-mode {
@@ -389,7 +386,7 @@ body.light-mode {
     color: #000000;
   }
   .nav-menu,
-  .header-actions,
+  .page-footer,
   .nav-toggle,
   #qr-container {
     display: none;
