@@ -7,12 +7,32 @@
   --card-bg: rgba(255, 255, 255, 0.05);
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+div,
+section,
+button,
+input {
+  max-width: 100%;
+  width: 100%;
+}
+
 body {
   font-family: "Nunito", sans-serif;
   font-size: 18px;
   font-weight: 300;
-  margin: 0;
-  padding: 0;
   background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
   color: var(--text-color);
 }
@@ -84,10 +104,11 @@ h2 {
   flex: 1;
 }
 
-.physician-map {
-  width: 200px;
-  margin-left: 1rem;
-}
+  .physician-map {
+    width: 100%;
+    max-width: 200px;
+    margin-left: 1rem;
+  }
 
 .physician-map iframe {
   width: 100%;
@@ -336,10 +357,11 @@ details[open] .med-details {
   font-size: 0.875rem;
 }
 
-#qr-container img {
-  width: 80px;
-  height: 80px;
-}
+  #qr-container img {
+    width: 100%;
+    max-width: 80px;
+    height: 80px;
+  }
 
 
 body.light-mode {
@@ -507,7 +529,8 @@ body.light-mode {
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
   height: 100%;
   background: #102840;
   color: #fff;
