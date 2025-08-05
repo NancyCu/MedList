@@ -308,6 +308,7 @@ details[open] .med-details {
   z-index: 1100;
   padding: 0.5rem 1rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: auto;
 }
 
 .nav-toggle:hover {
@@ -555,6 +556,7 @@ body.light-mode {
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
+  width: auto;
 }
 
 /* Updated styles for menu dropdown and button */
@@ -575,6 +577,7 @@ body.light-mode {
   font-size: 1rem;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: auto;
 }
 
 #nav-toggle:hover {
