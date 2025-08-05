@@ -27,13 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
     container.appendChild(card);
   });
 
+  const handlePrint = () => window.print();
+  const goHome = () => {
+    window.location.href = 'index.html';
+  };
+
   document.querySelectorAll('.print-btn').forEach((btn) =>
-    btn.addEventListener('click', () => window.print())
+    btn.addEventListener('click', handlePrint)
   );
 
   document.querySelectorAll('.home-btn').forEach((btn) =>
-    btn.addEventListener('click', () => {
-      window.location.href = 'index.html';
-    })
+    btn.addEventListener('click', goHome)
   );
 });
