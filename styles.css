@@ -1,3 +1,20 @@
+/* ✅ Prevent horizontal scroll */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ✅ Make layout more mobile-friendly */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, div, section, button, input {
+  max-width: 100%;
+  width: 100%;
+}
+
 :root {
   --bg-start: #0a192f;
   --bg-end: #1c2b46;
@@ -5,28 +22,6 @@
   --accent-light: #4dd0e1;
   --text-color: #e0f7fa;
   --card-bg: rgba(255, 255, 255, 0.05);
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-img,
-div,
-section,
-button,
-input {
-  max-width: 100%;
-  width: 100%;
 }
 
 body {
