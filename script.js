@@ -25,6 +25,33 @@ const physicians = [
   },
 ];
 
+const appointments = [
+  {
+    name: "Lincoln Jimenez",
+    date: "Thu, Aug 21, 2025 03:00 PM",
+    reason: "Transsphenoidal resection pituitary mass with no images",
+    location: "HCA Florida West Neurosurgical Specialists",
+    address: "2120 E Johnson Ave, Ste 106, Pensacola, FL 325146091",
+    phone: "(850)555-0101",
+  },
+  {
+    name: "Edward Schuka",
+    date: "Mon, Aug 18, 2025 02:30 PM",
+    reason: "Non Traumatic Brain Injury - pt in WFH discharged 07/28",
+    location: "HCA Florida West Primary Care - Nine Mile Rd",
+    address: "1190 E Nine Mile Rd, Pensacola, FL 325141651",
+    phone: "(850)555-0102",
+  },
+  {
+    name: "Lauren Knierim",
+    date: "Tue, Sep 9, 2025 03:00 PM",
+    reason: "CC 6M POST WM",
+    location: "HCA Florida West Cardiology Specialists - Pensacola",
+    address: "8333 N Davis Hwy FL 4, Pensacola, FL 325146050",
+    phone: "(850)555-0103",
+  },
+];
+
 const medications = [
   {
     number: 1,
@@ -205,6 +232,61 @@ function renderPhysicians() {
   el.innerHTML = html;
 }
 
+function createICS(appt) {
+  const start = new Date(appt.date);
+  const end = new Date(start.getTime() + 30 * 60000);
+  const pad = (n) => String(n).padStart(2, '0');
+  const format = (d) =>
+    `${d.getUTCFullYear()}${pad(d.getUTCMonth() + 1)}${pad(d.getUTCDate())}T${pad(
+      d.getUTCHours()
+    )}${pad(d.getUTCMinutes())}00Z`;
+  const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${appt.reason}\nDTSTART:${format(
+    start
+  )}\nDTEND:${format(end)}\nLOCATION:${appt.address}\nEND:VEVENT\nEND:VCALENDAR`;
+  return URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
+}
+
+function checkIn(name) {
+  console.log(`Check-In stub for ${name}`);
+}
+
+function renderAppointments() {
+  const el = document.getElementById('appointments-section');
+  let html =
+    "<h2><i class='far fa-calendar-alt'></i> Upcoming Appointments</h2>";
+  appointments.forEach((appt, idx) => {
+    const tel = `tel:${appt.phone.replace(/[^+\d]/g, '')}`;
+    const icsUrl = createICS(appt);
+    html += `
+      <div class="appointment-card">
+        <div class="appointment-header">
+          <div class="profile-icon">${appt.name.charAt(0)}</div>
+          <div class="appointment-main">
+            <h3 class="appointment-name">${appt.name}</h3>
+            <p class="appointment-datetime">${appt.date}</p>
+          </div>
+          <a href="${tel}" class="phone-link" aria-label="Call"><i class="fas fa-phone"></i></a>
+        </div>
+        <p class="appointment-reason">${appt.reason}</p>
+        <p class="appointment-location">${appt.location}</p>
+        <p class="appointment-address">${appt.address}</p>
+        <img src="https://via.placeholder.com/400x200?text=Map" alt="Map snapshot" class="map-snapshot">
+        <div class="appointment-actions">
+          <a href="${icsUrl}" download="appointment-${idx + 1}.ics" class="calendar-link" aria-label="Add to Calendar"><i class="far fa-calendar-plus"></i></a>
+          <button class="check-in-btn" data-name="${appt.name}">Check-In</button>
+        </div>
+        <textarea class="appointment-notes" placeholder="Notes..."></textarea>
+      </div>
+    `;
+  });
+  el.innerHTML = html;
+  el.querySelectorAll('.check-in-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      checkIn(e.target.dataset.name);
+    });
+  });
+}
+
 function renderMedications() {
   const list = document.getElementById('med-list');
   list.innerHTML = '';
@@ -353,6 +435,7 @@ function initUI() {
 document.addEventListener('DOMContentLoaded', () => {
   renderPatient();
   renderPhysicians();
+  renderAppointments();
   renderMedications();
   initUI();
 });
