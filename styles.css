@@ -490,8 +490,12 @@ body.light-mode {
 }
 
 .map-snapshot {
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
   border-radius: 8px;
   margin: 0.5rem 0;
+  object-fit: cover;
 }
 
 .appointment-actions {
@@ -632,6 +636,10 @@ body.light-mode {
 
   .physician-map iframe {
     height: 150px;
+  }
+  .map-snapshot {
+    height: 150px;
+    max-width: 100%;
   }
 }
 
