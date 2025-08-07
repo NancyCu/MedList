@@ -26,6 +26,14 @@ const physicians = [
 ];
 
 const appointments = [
+    {
+    name: "Edward Schuka",
+    date: "Mon, Aug 18, 2025 02:30 PM",
+    reason: "Non Traumatic Brain Injury - pt in WFH discharged 07/28",
+    location: "HCA Florida West Primary Care - Nine Mile Rd",
+    address: "1190 E Nine Mile Rd, Pensacola, FL 325141651",
+    phone: "(850)555-0102",
+  },
   {
     name: "Lincoln Jimenez",
     date: "Thu, Aug 21, 2025 03:00 PM",
@@ -33,14 +41,6 @@ const appointments = [
     location: "HCA Florida West Neurosurgical Specialists",
     address: "2120 E Johnson Ave, Ste 106, Pensacola, FL 325146091",
     phone: "(850)555-0101",
-  },
-  {
-    name: "Edward Schuka",
-    date: "Mon, Aug 18, 2025 02:30 PM",
-    reason: "Non Traumatic Brain Injury - pt in WFH discharged 07/28",
-    location: "HCA Florida West Primary Care - Nine Mile Rd",
-    address: "1190 E Nine Mile Rd, Pensacola, FL 325141651",
-    phone: "(850)555-0102",
   },
   {
     name: "Lauren Knierim",
@@ -59,6 +59,8 @@ const appointments = [
     phone: "(850)555-0104",
   },
 ];
+
+appointments.sort((a, b) => new Date(a.date) - new Date(b.date));
 
 const medications = [
   {
