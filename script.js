@@ -259,43 +259,73 @@ function checkIn(name) {
 }
 
 function renderAppointments() {
-  const el = document.getElementById('appointments-section');
-  let html = `
-    <details class="appointments-wrapper">
-      <summary class="collapse-summary"><i class='far fa-calendar-alt'></i> Upcoming Appointments</summary>
-  `;
+  const section = document.getElementById('appointments-section');
+
+  const wrapper = document.createElement('details');
+  wrapper.className = 'appointments-wrapper';
+  wrapper.open = true;
+
+  const summary = document.createElement('summary');
+  summary.className = 'collapse-summary';
+  summary.innerHTML = "<i class='far fa-calendar-alt'></i> Upcoming Appointments";
+  wrapper.appendChild(summary);
+
   appointments.forEach((appt, idx) => {
-    const tel = `tel:${appt.phone.replace(/[^+\d]/g, '')}`;
-    const icsUrl = createICS(appt);
-    html += `
-      <details class="appointment-card">
-        <summary class="collapse-summary">
-          <div class="appointment-header">
-            <div class="profile-icon">${appt.name.charAt(0)}</div>
-            <div class="appointment-main">
-              <h3 class="appointment-name">${appt.name}</h3>
-              <p class="appointment-datetime">${appt.date}</p>
-            </div>
-            <a href="${tel}" class="phone-link" aria-label="Call" onclick="event.stopPropagation();"><i class="fas fa-phone"></i></a>
-          </div>
-        </summary>
-        <div class="appointment-details">
+    const card = document.createElement('details');
+    card.className = 'appointment-card';
+
+    const cardSummary = document.createElement('summary');
+    cardSummary.className = 'collapse-summary';
+
+    const header = document.createElement('div');
+    header.className = 'appointment-header';
+
+    const icon = document.createElement('div');
+    icon.className = 'profile-icon';
+    icon.textContent = appt.name.charAt(0);
+
+    const main = document.createElement('div');
+    main.className = 'appointment-main';
+    main.innerHTML = `<h3 class="appointment-name">${appt.name}</h3><p class="appointment-datetime">${appt.date}</p>`;
+
+    const phoneLink = document.createElement('a');
+    phoneLink.href = `tel:${appt.phone.replace(/[^+\d]/g, '')}`;
+    phoneLink.className = 'phone-link';
+    phoneLink.setAttribute('aria-label', 'Call');
+    phoneLink.innerHTML = '<i class="fas fa-phone"></i>';
+    phoneLink.addEventListener('click', (e) => e.stopPropagation());
+
+    header.appendChild(icon);
+    header.appendChild(main);
+    header.appendChild(phoneLink);
+    cardSummary.appendChild(header);
+    card.appendChild(cardSummary);
+
+    const details = document.createElement('div');
+    details.className = 'appointment-details';
+
+    const mapQuery = encodeURIComponent(appt.address.replace(/<br>/g, ' '));
+    const addressLink = `<a href="https://maps.google.com/?q=${mapQuery}" target="_blank" rel="noopener noreferrer">${appt.address}</a>`;
+
+    details.innerHTML = `
           <p class="appointment-reason">${appt.reason}</p>
           <p class="appointment-location">${appt.location}</p>
-          <p class="appointment-address">${appt.address}</p>
-          <img src="https://via.placeholder.com/400x200?text=Map" alt="Map snapshot" class="map-snapshot">
+          <p class="appointment-address">${addressLink}</p>
+          <iframe src="https://maps.google.com/maps?q=${mapQuery}&output=embed" class="map-snapshot" frameborder="0" allowfullscreen></iframe>
           <div class="appointment-actions">
-            <a href="${icsUrl}" download="appointment-${idx + 1}.ics" class="calendar-link" aria-label="Add to Calendar"><i class="far fa-calendar-plus"></i></a>
+            <a href="${createICS(appt)}" download="appointment-${idx + 1}.ics" class="calendar-link" aria-label="Add to Calendar"><i class="far fa-calendar-plus"></i></a>
             <button class="check-in-btn" data-name="${appt.name}">Check-In</button>
           </div>
           <textarea class="appointment-notes" placeholder="Notes..."></textarea>
-        </div>
-      </details>
-    `;
+        `;
+    card.appendChild(details);
+    wrapper.appendChild(card);
   });
-  html += `</details>`;
-  el.innerHTML = html;
-  el.querySelectorAll('.check-in-btn').forEach((btn) => {
+
+  section.innerHTML = '';
+  section.appendChild(wrapper);
+
+  section.querySelectorAll('.check-in-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       checkIn(e.target.dataset.name);
     });

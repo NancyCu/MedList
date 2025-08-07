@@ -495,7 +495,7 @@ body.light-mode {
   height: 200px;
   border-radius: 8px;
   margin: 0.5rem 0;
-  object-fit: cover;
+  border: none;
 }
 
 .appointment-actions {
