@@ -477,6 +477,26 @@ function initUI() {
       menu.classList.remove('open');
     });
   });
+
+  const navLinks = document.querySelectorAll('#nav-menu a');
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  document.querySelectorAll('section').forEach((section) => {
+    sectionObserver.observe(section);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {

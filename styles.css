@@ -3,6 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /* ✅ Make layout more mobile-friendly */
@@ -66,6 +67,17 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .physician {
@@ -283,6 +295,10 @@ details[open] .med-details {
   color: var(--accent-light);
   text-decoration: none;
   font-weight: 700;
+}
+
+.nav-menu a.active {
+  color: var(--accent);
 }
 
 .nav-toggle {
